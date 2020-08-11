@@ -3,7 +3,7 @@
     command: "touch /root/{{ server_host }}"
     
   - name: Include "{{ansible_os_family}}" SGE recipe
-    include: "{{ansible_os_family}}.yaml"
+    include: "{{ansible_os_family}}.yml"
 
   - name: Include "{{sge_type_of_node}}" SGE recipe
-    include: "{{sge_type_of_node}}.yaml"
+    include: "{{sge_type_of_node}}.yml"
