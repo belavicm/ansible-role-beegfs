@@ -7,7 +7,7 @@
 
 
   - name: Setup beegfs client
-    command: "/opt/beegfs/sbin/beegfs-setup-client -m {{ item.server_host }}"
+    command: "/opt/beegfs/sbin/beegfs-setup-client -m {{ server_host }}"
 
   - name: enable beegfs-client
     systemd:
