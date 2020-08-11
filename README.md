@@ -22,6 +22,6 @@ This an example of how to install a SLURM cluster with three nodes:
 ```
 - hosts: server
   roles:
-  - { role: 'grycap.beegfs', vnode_prefix: 'front', server_host: '{{ hostvars[groups["front"][0]]["IM_NODE_PRIVATE_IP"] }}' }]}
+  - { role: 'grycap.beegfs', sge_type_of_node: 'front', server_host: '{{ hostvars[groups["front"][0]]["IM_NODE_PRIVATE_IP"] }}' }]}
 ```
 
