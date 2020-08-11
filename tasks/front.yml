@@ -1,0 +1,49 @@
+---
+
+  - name: Make mgmtd dir
+    command: mkdir -p /beegfs/mgmtd
+
+  - name: Setup beegfs mgmtd
+    command: /opt/beegfs/sbin/beegfs-setup-mgmtd -p /beegfs/mgmtd/
+
+  - name: enable beegfs-mgmtd
+    systemd:
+      name: beegfs-mgmtd
+      state: started
+      enabled: yes
+
+  - name: Make meta dir
+    command: mkdir -p /beegfs/meta
+
+  - name: Setup beegfs mgmtd
+    command: "/opt/beegfs/sbin/beegfs-setup-meta -p /beegfs/meta/ -m {{ item.server_host }}"
+
+  - name: enable beegfs-meta
+    systemd:
+      name: beegfs-meta
+      state: started
+      enabled: yes
+
+  - name: Make storage dir
+    command: mkdir -p /beegfs/storage
+
+  - name: Setup beegfs mgmtd
+    command: "/opt/beegfs/sbin/beegfs-setup-storage -p /beegfs/storage/ -m {{ item.server_host }}"
+
+  - name: enable beegfs-storage
+    systemd:
+      name: beegfs-storage
+      state: started
+      enabled: yes
+
+
+  - name: Setup beegfs client
+    command: "/opt/beegfs/sbin/beegfs-setup-client -m {{ item.server_host }}"
+
+  - name: enable beegfs-client
+    systemd:
+      name: beegfs-client
+      state: started
+      enabled: yes
+
+

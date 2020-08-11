@@ -1,0 +1,18 @@
+---
+  - name: enable beegfs-helperd
+    systemd:
+      name: beegfs-storage
+      state: started
+      enabled: yes
+
+
+  - name: Setup beegfs client
+    command: "/opt/beegfs/sbin/beegfs-setup-client -m {{ item.server_host }}"
+
+  - name: enable beegfs-client
+    systemd:
+      name: beegfs-client
+      state: started
+      enabled: yes
+
+
