@@ -16,7 +16,7 @@
     command: mkdir -p /beegfs/meta
 
   - name: Setup beegfs mgmtd
-    command: "/opt/beegfs/sbin/beegfs-setup-meta -p /beegfs/meta/ -m {{ item.server_host }}"
+    command: "/opt/beegfs/sbin/beegfs-setup-meta -p /beegfs/meta/ -m {{ server_host }}"
 
   - name: enable beegfs-meta
     systemd:
@@ -28,7 +28,7 @@
     command: mkdir -p /beegfs/storage
 
   - name: Setup beegfs mgmtd
-    command: "/opt/beegfs/sbin/beegfs-setup-storage -p /beegfs/storage/ -m {{ item.server_host }}"
+    command: "/opt/beegfs/sbin/beegfs-setup-storage -p /beegfs/storage/ -m {{ server_host }}"
 
   - name: enable beegfs-storage
     systemd:
@@ -38,7 +38,7 @@
 
 
   - name: Setup beegfs client
-    command: "/opt/beegfs/sbin/beegfs-setup-client -m {{ item.server_host }}"
+    command: "/opt/beegfs/sbin/beegfs-setup-client -m {{ server_host }}"
 
   - name: enable beegfs-client
     systemd:
