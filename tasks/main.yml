@@ -6,4 +6,4 @@
     include: "{{ansible_os_family}}.yml"
 
   - name: Include "{{sge_type_of_node}}" SGE recipe
-    include: "{{sge_type_of_node}}.yml"
+    include: "{{type_of_node}}.yml"
