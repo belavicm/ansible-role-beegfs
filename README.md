@@ -10,9 +10,9 @@ The variables that can be passed to this role and a brief description about them
 ```
 
 # Type of node to install: front or wn
-vnode_prefix: front
-# Class to use as power manager (POWERMANAGER_CLASS)
-clues_powermanager_class: cluesplugins.im
+type_of_node: front
+# BeeGFS server host
+server_host: '{{ hostvars[groups["front"][0]]["IM_NODE_PRIVATE_IP"] }}'
 ```
 
 Example Playbook
@@ -22,6 +22,6 @@ This an example of how to install a SLURM cluster with three nodes:
 ```
 - hosts: server
   roles:
-  - { role: 'grycap.beegfs', sge_type_of_node: 'front', server_host: '{{ hostvars[groups["front"][0]]["IM_NODE_PRIVATE_IP"] }}' }]}
+  - { role: 'grycap.beegfs', type_of_node: 'front', server_host: '{{ hostvars[groups["front"][0]]["IM_NODE_PRIVATE_IP"] }}' }
 ```
 
