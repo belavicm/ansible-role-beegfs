@@ -7,7 +7,7 @@
     command: rm -fr /beegfs/mgmtd/*
 
   - name: Setup beegfs mgmtd
-    command: /opt/beegfs/sbin/beegfs-setup-mgmtd -p /beegfs/mgmtd/
+    command: /opt/beegfs/sbin/beegfs-setup-mgmtd -f -p /beegfs/mgmtd/
 
   - name: enable beegfs-mgmtd
     systemd:
