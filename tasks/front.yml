@@ -2,6 +2,9 @@
 
   - name: Make mgmtd dir
     command: mkdir -p /beegfs/mgmtd
+    
+  - name: Make mgmtd dir
+    command: rm -fr /beegfs/mgmtd/*
 
   - name: Setup beegfs mgmtd
     command: /opt/beegfs/sbin/beegfs-setup-mgmtd -p /beegfs/mgmtd/
