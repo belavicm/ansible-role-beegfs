@@ -1,7 +1,5 @@
 ---
-  - name: test host ip
-    command: "touch /root/{{ server_host }}"
-    
+
   - name: Include "{{ansible_os_family}}" SGE recipe
     include: "{{ansible_os_family}}.yml"
 
