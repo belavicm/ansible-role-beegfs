@@ -13,6 +13,8 @@ The variables that can be passed to this role and a brief description about them
 type_of_node: front
 # BeeGFS server host
 server_host: '{{ hostvars[groups["front"][0]]["IM_NODE_PRIVATE_IP"] }}'
+# Main BeeGFS interface
+main_beegfs_interface: 'eth1'
 ```
 
 Example Playbook
