@@ -4,6 +4,36 @@
       path: /beegfs/mgmtd
       state: directory
       mode: '0755'
+    
+  - name: Add a main connection interface for beegfs
+    lineinfile:
+      path: /etc/beegfs/interfaces
+      line: {{ main_beegfs_interface }}
+      create: yes
+      
+  - name: Chnage connInterfacesFile from file
+    lineinfile:
+      path: /etc/beegfs/beegfs-mgmtd.conf
+      regexp: '^connInterfacesFile'
+      line: 'connInterfacesFile                     =/etc/beegfs/interfaces'
+      
+  - name: Chnage connInterfacesFile from file
+    lineinfile:
+      path: /etc/beegfs/beegfs-client.conf
+      regexp: '^connInterfacesFile'
+      line: 'connInterfacesFile                     =/etc/beegfs/interfaces'
+      
+  - name: Chnage connInterfacesFile from file
+    lineinfile:
+      path: /etc/beegfs/beegfs-meta.conf
+      regexp: '^connInterfacesFile'
+      line: 'connInterfacesFile                     =/etc/beegfs/interfaces'
+      
+  - name: Chnage connInterfacesFile from file
+    lineinfile:
+      path: /etc/beegfs/beegfs-storage.conf
+      regexp: '^connInterfacesFile
+      line: 'connInterfacesFile                     =/etc/beegfs/interfaces'
 
   - name: Setup beegfs mgmtd
     command: "/opt/beegfs/sbin/beegfs-setup-mgmtd -f -p /beegfs/mgmtd/"
