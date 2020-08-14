@@ -1,4 +1,5 @@
 ---
 # Type of node to install: front or wn
 vnode_prefix: front
+main_beegfs_interface: eth1
 
