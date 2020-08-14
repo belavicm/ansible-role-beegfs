@@ -5,6 +5,7 @@
 
   - name: Setup beegfs mgmtd
     command: "/opt/beegfs/sbin/beegfs-setup-mgmtd -f -p /beegfs/mgmtd/"
+    ignore_errors: yes
 
   - name: enable beegfs-mgmtd
     systemd:
