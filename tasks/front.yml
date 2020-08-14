@@ -1,7 +1,9 @@
 ---
-
-  - name: Make mgmtd dir
-    command: mkdir -p /beegfs/mgmtd
+  - name: Create a directory /beegfs/mgmtd if it does not exist
+    file:
+      path: /beegfs/mgmtd
+      state: directory
+      mode: '0755'
 
   - name: Setup beegfs mgmtd
     command: "/opt/beegfs/sbin/beegfs-setup-mgmtd -f -p /beegfs/mgmtd/"
@@ -13,11 +15,15 @@
       state: started
       enabled: yes
 
-  - name: Make meta dir
-    command: mkdir -p /beegfs/meta
+  - name: Create a directory /beegfs/meta if it does not exist
+    file:
+      path: /beegfs/meta
+      state: directory
+      mode: '0755'
 
   - name: Setup beegfs mgmtd
-    command: "/opt/beegfs/sbin/beegfs-setup-meta -p /beegfs/meta/ -m {{ server_host }}"
+    command: "/opt/beegfs/sbin/beegfs-setup-meta -f -p /beegfs/meta/ -m {{ server_host }}"
+    ignore_errors: yes
 
   - name: enable beegfs-meta
     systemd:
@@ -25,11 +31,15 @@
       state: started
       enabled: yes
 
-  - name: Make storage dir
-    command: mkdir -p /beegfs/storage
+  - name: Create a directory /beegfs/storage if it does not exist
+    file:
+      path: /beegfs/storage
+      state: directory
+      mode: '0755'
 
   - name: Setup beegfs mgmtd
-    command: "/opt/beegfs/sbin/beegfs-setup-storage -p /beegfs/storage/ -m {{ server_host }}"
+    command: "/opt/beegfs/sbin/beegfs-setup-storage -f -p /beegfs/storage/ -m {{ server_host }}"
+    ignore_errors: yes
 
   - name: enable beegfs-storage
     systemd:
